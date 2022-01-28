@@ -1,0 +1,23 @@
+#AutoTask Configs
+
+## ISP Configs
+isp_username = "USERNAME"
+isp_password = "PASSWORD"
+isp_url = "https://ISP.COM/LOGIN"
+
+## AutoTask Configs
+intergration_code = "INTERGRATIONCODE"
+at_username = "USERNAME"
+at_secret = "PASSWORD"
+
+
+## Personal Information
+fullname = "FirstName LastName"
+address = "123 Abc Lane, City State 12345"
+userID = 0000000
+bill_amount = 00.0000
+
+
+## Computer Configs
+chrome_driver_path = '/usr/local/bin/chromedriver'
+download_dir = "/home/user/downloads/statements"
