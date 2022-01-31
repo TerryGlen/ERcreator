@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  Run Tests:
 
     runs-on: ubuntu-latest
     environment: production
@@ -39,5 +39,10 @@ jobs:
         ISP_USERNAME: ${{ secrets.ISP_USERNAME }}
         ISP_PASSWORD: ${{ secrets.ISP_PASSWORD }}
         ISP_URL:  ${{ secrets.ISP_URL }}
+        AT_USERNAME: ${{ secrets.AT_USERNAME }}
+        AT_SECRET: ${{ secrets.AT_SECRET }}
+        AT_USERID:  ${{ secrets.AT_USERID }}  
+        INTERGRATION_CODE: ${{ secrets.INTERGRATION_CODE }}  
+
       run: |
         pipenv run test -v

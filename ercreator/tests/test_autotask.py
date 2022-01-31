@@ -6,7 +6,7 @@ from context import autotask, constants
 
 
 def test_get_expense_reports():
-    report = autotask.get_expense_reports(constants.userID)
+    report = autotask.get_expense_reports(constants.at_userID)
     assert len(report.items)!=0, "Reports list should not be empty"
 
 

@@ -19,6 +19,3 @@ def run_before_and_after_tests():
     if os.path.exists(filePath):
         os.remove(filePath)
 
-    
-    
-
