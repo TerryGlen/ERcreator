@@ -2,12 +2,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support.expected_conditions import presence_of_element_located
-from . import config
+from . import constants
 import time
 import os
 import sys
@@ -21,20 +17,20 @@ def get_maxxsouth_bill(billName = ""):
     chrome_options = Options()
     chrome_options.add_argument('--headless')
 
-    prefs = {"download.default_directory" : config.download_dir}
+    prefs = {"download.default_directory" : constants.download_dir}
     chrome_options.add_experimental_option("prefs", prefs)
     
     with webdriver.Chrome(options=chrome_options) as driver:
         # Set timeout time 
         wait = WebDriverWait(driver, 10)
         # retrive url in headless browser
-        driver.get(config.isp_url)
+        driver.get(constants.isp_url)
         
         # find search box
         userField = driver.find_element(By.ID, "textfield-1041-inputEl")
         passField = driver.find_element(By.ID, "textfield-1042-inputEl")
-        userField.send_keys(config.isp_username)
-        passField.send_keys(config.isp_password)
+        userField.send_keys(constants.isp_username)
+        passField.send_keys(constants.isp_password)
 
         loginButton = driver.find_element(By.ID,"button-1044")
 
@@ -42,7 +38,7 @@ def get_maxxsouth_bill(billName = ""):
         loginButton.click()
         time.sleep(3)
         
-        driver.get(config.isp_url)
+        driver.get(constants.isp_url)
         time.sleep(3)
         currentDate = driver.find_element(By.ID, "comboasselectfield-1128-inputEl").get_attribute('value')
 
@@ -50,8 +46,8 @@ def get_maxxsouth_bill(billName = ""):
             billName= f"{currentDate}.pdf"
 
         print("Latest Statement: " + currentDate)
-        if os.path.isdir(config.download_dir):
-            if len(os.listdir(config.download_dir) ) != 0:  #Check if Directory is Empty
+        if os.path.isdir(constants.download_dir):
+            if len(os.listdir(constants.download_dir) ) != 0:  #Check if Directory is Empty
                 if billName in latest_download_file():
                       raise Exception("We already have a statement for this date!")
                    
@@ -60,7 +56,7 @@ def get_maxxsouth_bill(billName = ""):
         viewPDFButton = driver.find_element(By.ID, "button-1129-btnInnerEl")
         viewPDFButton.click()
 
-        print("Downloading PDF copy to" + config.download_dir)
+        print("Downloading PDF copy to" + constants.download_dir)
         wait_file_download()
         pdf_current = latest_download_file()
 
@@ -77,7 +73,7 @@ def get_maxxsouth_bill(billName = ""):
 
 
 def latest_download_file():
-      path = config.download_dir
+      path = constants.download_dir
       os.chdir(path)
       files = sorted(os.listdir(os.getcwd()), key=os.path.getmtime)
       newest = files[-1]

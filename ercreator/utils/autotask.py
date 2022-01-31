@@ -4,12 +4,12 @@ from urllib import response
 import requests
 from types import SimpleNamespace as Namespace
 from datetime import datetime
-from . import config
+from . import constants
 
 
 
 
-my_headers = {'ApiIntegrationcode' : config.intergration_code, 'UserName' : config.at_username, 'Secret' : config.at_secret, 'Content-Type': 'application/json'}
+my_headers = {'ApiIntegrationcode' : constants.intergration_code, 'UserName' : constants.at_username, 'Secret' : constants.at_secret, 'Content-Type': 'application/json'}
 
 now = datetime.now()
 timestamp = now.strftime("%Y-%m-%dT%H:%M:%S")

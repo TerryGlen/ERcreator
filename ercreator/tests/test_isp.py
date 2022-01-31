@@ -1,7 +1,7 @@
 
 import pytest
 import os
-from context import isp, config
+from context import isp, constants
 
 
 billName = "test.pdf"
@@ -15,7 +15,7 @@ def test_download_maxxsouth_bill():
 @pytest.fixture(autouse=True)
 def run_before_and_after_tests():
     yield
-    os.remove(os.path.join(config.download_dir, billName))
+    os.remove(os.path.join(constants.download_dir, billName))
     
     
 

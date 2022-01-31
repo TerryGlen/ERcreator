@@ -1,12 +1,12 @@
 
 import pytest
 import os
-from context import autotask, config
+from context import autotask, constants
 
 
 
 def test_get_expense_reports():
-    report = autotask.get_expense_reports(config.userID)
+    report = autotask.get_expense_reports(constants.userID)
     assert len(report.items)!=0, "Reports list should not be empty"
 
 
