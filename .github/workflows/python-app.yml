@@ -34,6 +34,13 @@ jobs:
       if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: |
           pipenv install --deploy --dev
+          
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
     - name: Run test suite
       env:
         ISP_USERNAME: ${{ secrets.ISP_USERNAME }}
@@ -46,3 +53,7 @@ jobs:
 
       run: |
         pipenv run test -v
+
+    
+
+    
