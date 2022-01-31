@@ -8,6 +8,7 @@ requests = "*"
 selenium = "*"
 pytest = "*"
 python-dotenv = "*"
+chromedriver-py = "*"
 
 [dev-packages]
 
