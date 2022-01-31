@@ -5,9 +5,9 @@ load_dotenv()
 #AutoTask Configs
 
 ## ISP Configs
-isp_username = os.getenv("isp_username")
-isp_password = os.getenv("isp_password")
-isp_url = os.getenv("isp_url")
+isp_username = os.getenv("ISP_USERNAME")
+isp_password = os.getenv("ISP_PASSWORD")
+isp_url = os.getenv("ISP_URL")
 
 ## AutoTask Configs
 intergration_code = os.getenv("intergration_code")
