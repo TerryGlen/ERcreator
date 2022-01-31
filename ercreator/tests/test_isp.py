@@ -15,7 +15,10 @@ def test_download_maxxsouth_bill():
 @pytest.fixture(autouse=True)
 def run_before_and_after_tests():
     yield
-    os.remove(os.path.join(constants.download_dir, billName))
+    filePath = os.path.join(constants.download_dir, billName)
+    if os.path.exists(filePath):
+        os.remove(filePath)
+
     
     
 
