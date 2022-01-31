@@ -22,6 +22,14 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: "3.10"
+    
+          
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
     - name: Install pipenv
       run: |
         python -m pip install --upgrade pipenv wheel
@@ -34,13 +42,6 @@ jobs:
       if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: |
           pipenv install --deploy --dev
-          
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    environment: production
-    
-    steps:
     - name: Run test suite
       env:
         ISP_USERNAME: ${{ secrets.ISP_USERNAME }}
