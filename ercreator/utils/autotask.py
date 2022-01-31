@@ -67,9 +67,6 @@ def create_expense_item_attachment(itemID, attachment_path):
     response = requests.post(url = item_attachment_url, json=attachment, headers=my_headers)
     if response.status_code != 200 :
         raise Exception(f"Autotask Error: {response.reason}")
-
-    print(response.status_code)
-    print(response.content)
     attachment = json.loads(response.content.decode('utf-8'), object_hook=lambda d : Namespace(**d))
     return attachment.itemId
 
@@ -78,8 +75,7 @@ def submit_expense_report(reportID):
     expense_report_url = f"https://webservices5.autotask.net/atservicesrest/v1.0/ExpenseReports/"
     report = {"id": reportID, "submit" : 1}
     response = requests.patch(url = expense_report_url, json = report, headers=my_headers)
-    print(response.status_code)
-    print(response.content)
+
 
 
 
