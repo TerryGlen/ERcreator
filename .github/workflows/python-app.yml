@@ -35,5 +35,9 @@ jobs:
       run: |
           pipenv install --deploy --dev
     - name: Run test suite
+      env:
+        ISP_USERNAME: ${{ secrets.ISP_USERNAME }}
+        ISP_PASSWORD: ${{ secrets.ISP_PASSWORD }}
+        ISP_URL:  ${{ secrets.ISP_URL }}
       run: |
         pipenv run test -v
