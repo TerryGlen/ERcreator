@@ -14,4 +14,4 @@ pytest = "*"
 python_version = "3.8"
 
 [scripts]
-tests = "pytest tests/"
+test = "pytest tests/"
